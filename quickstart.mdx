@@ -1,0 +1,41 @@
+---
+title: "Property setup"
+description: "Prepare a hotel for its first guest tipping experience."
+---
+
+> Use an approved test property for the walkthrough. This sample checklist does not confirm that any property is ready for production.
+
+## Before you begin
+
+Have the property name, branding assets, timezone, and integration details ready. Use an account authorized to edit the relevant settings. Some credentials are restricted by role.
+
+## 1. Set the hotel identity
+
+Add the hotel's name, logo, brand color, and policy links. Confirm that the guest experience clearly identifies the property.
+
+## 2. Connect hotel and payment systems
+
+| Area | Configure | Review |
+| --- | --- | --- |
+| PMS | Opera Cloud or Cloudbeds connection | Reservation lookup for a test stay |
+| Card payments | The property's payment gateway | An approved test payment |
+| Email | Sender name, sender email, and SMTP settings | A test message and its tip link |
+
+Keep passwords, API keys, and guest details out of documentation and screenshots.
+
+## 3. Choose the guest experience
+
+Configure the default daily tip, branding, and available tipping options. Set the property's IANA timezone and local pre-checkout email hour. For example, America/New_York identifies a timezone, while 10 identifies 10:00 local time.
+
+## 4. Review staff and payouts
+
+Confirm staff access and the intended distribution workflow. Review payout configuration separately: collecting a successful tip does not prove a payout has completed.
+
+## Launch review
+
+- Open the guest flow from a test email link.
+- Verify a test reservation through the QR flow.
+- Check the enabled payment paths with approved test controls.
+- Confirm that the team can see the expected records.
+
+Record actual test results before treating this checklist as complete.

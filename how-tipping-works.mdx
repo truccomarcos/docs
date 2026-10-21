@@ -1,0 +1,42 @@
+---
+title: "How tipping works"
+description: "Follow the guest journey from a verified stay to a recorded tip."
+---
+
+> Technical orientation for the demo. Routes below are drawn from the repository; this page is not a complete API contract or a live integration test.
+
+## Two entry points
+
+**Email:** The scheduler checks each property's configured local send hour, finds tomorrow's checkouts through the PMS, and sends guests an encrypted tipping link.
+
+**QR code:** The guest enters a last name, room number, and arrival date. The platform validates the reservation before continuing to the payment page.
+
+## Payment paths
+
+| Path | Guest experience | System behavior |
+| --- | --- | --- |
+| Pay Now | Enter card details with the configured provider | Charge the card and record the tip |
+| Add to Room | Available to eligible in-house guests | Post the tip to the guest folio through the PMS |
+
+A completed payment flow leads to the thank-you page. Tip distribution and employee payouts have their own rules and lifecycle.
+
+## API route map
+
+The backend exposes these routes under /v1:
+
+| Method | Route | Purpose |
+| --- | --- | --- |
+| POST | /reservations/search | Validate a reservation and return a token |
+| GET | /reservations/summary | Load the reservation summary |
+| POST | /charges | Process the card charge flow |
+| POST | /charges-stripe | Process the Stripe charge flow |
+| POST | /add-to-room | Post a tip to the room folio |
+
+## Troubleshooting a walkthrough
+
+1. If reservation verification fails, check the property and entered stay details.
+2. If Add to Room is unavailable, check whether the guest is in-house and the option is configured.
+3. If a card payment fails, inspect the provider response and transaction state before retrying.
+4. If staff have not received funds, inspect the separate payout workflow rather than assuming a successful guest payment completed the payout.
+
+Never place real tokens, card information, or guest records in a documentation example.
